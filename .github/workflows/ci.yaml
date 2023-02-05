@@ -1,0 +1,58 @@
+name: Rust CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check fmt
+        run: cargo fmt --all --check
+      - name: Check clippy
+        run: cargo clippy -- -D warnings
+      - name: Check build
+        run: cargo build
+      - name: Check test
+        run: cargo test
+
+  deploy-doc:
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build-test
+    concurrency:
+      group: "pages"
+      cancel-in-progress: true
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Rust nightly to build docs
+        run: rustup default nightly
+      - name: Build docs
+        run: RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --all-features --no-deps --verbose
+      - name: Generate index.html
+        run: echo '<meta http-equiv=refresh content=0;url=cats/index.html>' > target/doc/index.html
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: target/doc
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
