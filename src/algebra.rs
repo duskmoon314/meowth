@@ -6,7 +6,7 @@ pub mod monoid;
 pub mod property;
 pub mod semigroup;
 
-pub use group::Group;
+pub use group::{Group, GroupK};
 pub use magma::{Magma, MagmaK};
 pub use monoid::{Monoid, MonoidK};
 pub use property::{Associativity, Commutativity, Identity, Inverse, Totality};
