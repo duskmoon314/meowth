@@ -9,6 +9,17 @@ keywords = ["functional-programming", "category-theory"]
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/duskmoon314/cats"
 
+# docs.rs specific configs
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+
+[features]
+# Implementations for the `std` library.
+instance = []
+
+default = ["instance"]

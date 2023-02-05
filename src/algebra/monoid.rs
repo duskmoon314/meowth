@@ -22,12 +22,13 @@ use super::*;
 /// struct MyI32(pub i32);
 ///
 /// // To implement `Monoid` for `MyI32`, we need to implement `Magma`,
-/// // `Associativity` and `Identity` for `MyI32`.
+/// // `Totality`, `Associativity` and `Identity` for `MyI32`.
 /// impl Magma for MyI32 {
 ///     fn combine(x: MyI32, y: MyI32) -> MyI32 {
 ///         MyI32(x.0 + y.0)
 ///     }
 /// }
+/// impl Totality for MyI32 {}
 /// impl Associativity for MyI32 {}
 /// impl Identity for MyI32 {
 ///     const IDENTITY: MyI32 = MyI32(0);
@@ -47,11 +48,43 @@ pub trait Monoid<T = Self>: Semigroup<T> + Identity<T> {
         I: IntoIterator<Item = T>,
         T: Sized,
     {
-        xs.into_iter().fold(Self::identity(), Self::combine)
+        xs.into_iter().fold(Self::IDENTITY, Self::combine)
     }
 }
 
 impl<T, S: Semigroup<T> + Identity<T>> Monoid<T> for S {}
+
+/// # MonoidK
+///
+/// A `MonoidK` is a [`SemigroupK`] which has [`Identity`]. That is, the
+/// operation [`combine_k`](SemigroupK::combine_k) must be associative and there
+/// must be an element [`IDENTITY`](Identity::IDENTITY) such that
+/// `combine_k(x, IDENTITY) = x` for all `x`.
+///
+/// `MonoidK` is also a set of `F<_>` (HKT). [`MagmaK`] (which [`SemigroupK`]
+/// extends) uses GAT to implement this. See [`MagmaK`] for more details about
+/// how to implement `MonoidK`.
+///
+/// See [Monoid](https://en.wikipedia.org/wiki/Monoid) for more information.
+///
+/// ## Example
+///
+/// ```
+/// use cats::algebra::*;
+///
+/// assert_eq!(Vec::combine_all_k(vec![vec![1], vec![1], vec![1]]), vec![1, 1, 1]);
+/// ```
+pub trait MonoidK: SemigroupK + Identity {
+    fn combine_all_k<T, I>(xs: I) -> Self::F<T>
+    where
+        I: IntoIterator<Item = Self::F<T>>,
+        Self: Totality<Self::F<T>> + Associativity<Self::F<T>> + Identity<Self::F<T>>,
+    {
+        xs.into_iter().fold(Self::IDENTITY, Self::combine_k)
+    }
+}
+
+impl<S: SemigroupK + Identity> MonoidK for S {}
 
 #[cfg(test)]
 mod tests {
@@ -68,6 +101,7 @@ mod tests {
                 x + y
             }
         }
+        impl<T: Add<Output = T>> Totality<T> for Addition {}
         impl<T: Add<Output = T>> Associativity<T> for Addition {}
         impl Identity<i32> for Addition {
             const IDENTITY: i32 = 0;
@@ -84,5 +118,11 @@ mod tests {
         let i32_identity: i32 = Addition::identity();
         assert_eq!(i32_identity, 0);
         assert_eq!(Addition::is_identity(0.0), true);
+    }
+
+    #[test]
+    fn test_monoidk() {
+        let xs = vec![vec![1], vec![1], vec![1]];
+        assert_eq!(Vec::combine_all_k(xs), vec![1, 1, 1])
     }
 }
