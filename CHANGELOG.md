@@ -9,9 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- utilities:
+  - HKT1 (`F<_>`)
 - algebraic structures:
   - Magma, Semigroup, Monoid, Group
-  - MagmaK, SemigroupK, MonoidK, GroupK (for `F<_>`)
+  - MagmaK, SemigroupK, MonoidK, GroupK, Functor (for `F<_>`)
 - algebraic properties:
   - Totality, Associativity, Identity, Inverse, Commutativity
 

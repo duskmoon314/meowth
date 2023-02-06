@@ -85,23 +85,23 @@ impl<T, S: Monoid<T> + Inverse<T>> Group<T> for S {}
 ///
 /// TODO: Find an example of `GroupK`. I can't think of one for now.
 pub trait GroupK: MonoidK + Inverse {
-    fn is_inverse_k<T>(x: Self::F<T>, y: Self::F<T>) -> bool
+    fn is_inverse_k<T>(x: Self::Wrapped<T>, y: Self::Wrapped<T>) -> bool
     where
-        Self: Totality<Self::F<T>>
-            + Associativity<Self::F<T>>
-            + Identity<Self::F<T>>
-            + Inverse<Self::F<T>>,
-        Self::F<T>: PartialEq,
+        Self: Totality<Self::Wrapped<T>>
+            + Associativity<Self::Wrapped<T>>
+            + Identity<Self::Wrapped<T>>
+            + Inverse<Self::Wrapped<T>>,
+        Self::Wrapped<T>: PartialEq,
     {
         Self::combine_k(x, y) == Self::IDENTITY
     }
 
-    fn remove_k<T>(x: Self::F<T>, y: Self::F<T>) -> Self::F<T>
+    fn remove_k<T>(x: Self::Wrapped<T>, y: Self::Wrapped<T>) -> Self::Wrapped<T>
     where
-        Self: Totality<Self::F<T>>
-            + Associativity<Self::F<T>>
-            + Identity<Self::F<T>>
-            + Inverse<Self::F<T>>,
+        Self: Totality<Self::Wrapped<T>>
+            + Associativity<Self::Wrapped<T>>
+            + Identity<Self::Wrapped<T>>
+            + Inverse<Self::Wrapped<T>>,
     {
         Self::combine_k(x, Self::inverse(y))
     }

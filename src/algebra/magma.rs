@@ -1,3 +1,5 @@
+use crate::hkt::HKT1;
+
 use super::*;
 
 /// # Magma
@@ -81,41 +83,16 @@ impl<T> Magma for Vec<T> {
 /// `F<T>`. With the bound of generic, Rust can infer the type of `T` from
 /// the context. Thus, the usage is pretty like in other languages with HKT.
 /// (Or maybe I made a mistake in understanding HKT.)
-pub trait MagmaK: Totality + Sized {
-    /// # HKT `F<_>`
-    ///
-    /// `F<T>` represents the HKT `F<_>`, such as `Option<_>`. It should be
-    /// `Self` to implement `MagmaK` for `F<_>`. For example, `MyOption` can be
-    /// implemented as:
-    ///
-    /// ```
-    /// use cats::algebra::*;
-    ///
-    /// struct MyOption<T>(Option<T>);
-    ///
-    /// impl<T> Totality for MyOption<T> {}
-    ///
-    /// impl<A> MagmaK for MyOption<A> {
-    ///     type F<T> = MyOption<T>;
-    ///     
-    ///     fn combine_k<T>(x: MyOption<T>, y: MyOption<T>) -> MyOption<T> {
-    ///         MyOption(x.0.or(y.0))
-    ///     }
-    /// }
-    /// ```
-    type F<T>: MagmaK;
-
-    fn combine_k<T>(x: Self::F<T>, y: Self::F<T>) -> Self::F<T>
+pub trait MagmaK: HKT1 + Totality + Sized {
+    fn combine_k<T>(x: Self::Wrapped<T>, y: Self::Wrapped<T>) -> Self::Wrapped<T>
     where
         // I find this a trick to let Rust infer the type of `T` from the
         // context.
-        Self: Totality<Self::F<T>>;
+        Self: Totality<Self::Wrapped<T>>;
 }
 
 #[cfg(feature = "instance")]
 impl<A> MagmaK for Option<A> {
-    type F<T> = Option<T>;
-
     fn combine_k<T>(x: Option<T>, y: Option<T>) -> Option<T> {
         x.or(y)
     }
@@ -123,8 +100,6 @@ impl<A> MagmaK for Option<A> {
 
 #[cfg(feature = "instance")]
 impl<A> MagmaK for Vec<A> {
-    type F<T> = Vec<T>;
-
     fn combine_k<T>(x: Vec<T>, y: Vec<T>) -> Vec<T> {
         let mut z = x;
         z.extend(y);

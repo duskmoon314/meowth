@@ -2,4 +2,5 @@
 #![doc = include_str!("../README.md")]
 
 pub mod algebra;
-// pub mod hkt;
+pub mod hkt;
+// pub mod types;

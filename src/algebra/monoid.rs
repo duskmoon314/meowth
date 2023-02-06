@@ -75,10 +75,12 @@ impl<T, S: Semigroup<T> + Identity<T>> Monoid<T> for S {}
 /// assert_eq!(Vec::combine_all_k(vec![vec![1], vec![1], vec![1]]), vec![1, 1, 1]);
 /// ```
 pub trait MonoidK: SemigroupK + Identity {
-    fn combine_all_k<T, I>(xs: I) -> Self::F<T>
+    fn combine_all_k<T, I>(xs: I) -> Self::Wrapped<T>
     where
-        I: IntoIterator<Item = Self::F<T>>,
-        Self: Totality<Self::F<T>> + Associativity<Self::F<T>> + Identity<Self::F<T>>,
+        I: IntoIterator<Item = Self::Wrapped<T>>,
+        Self: Totality<Self::Wrapped<T>>
+            + Associativity<Self::Wrapped<T>>
+            + Identity<Self::Wrapped<T>>,
     {
         xs.into_iter().fold(Self::IDENTITY, Self::combine_k)
     }

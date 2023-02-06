@@ -107,10 +107,10 @@ impl<T, S: Magma<T> + Associativity<T>> Semigroup<T> for S {}
 /// assert_eq!(Option::combine_n_k(Some(1), 5), Some(1));
 /// ```
 pub trait SemigroupK: MagmaK + Associativity {
-    fn combine_n_k<T>(x: Self::F<T>, n: usize) -> Self::F<T>
+    fn combine_n_k<T>(x: Self::Wrapped<T>, n: usize) -> Self::Wrapped<T>
     where
-        Self: Associativity<Self::F<T>> + Totality<Self::F<T>>,
-        Self::F<T>: Clone,
+        Self: Associativity<Self::Wrapped<T>> + Totality<Self::Wrapped<T>>,
+        Self::Wrapped<T>: Clone,
     {
         let mut result = x.clone();
         for _ in 1..n {
@@ -119,9 +119,11 @@ pub trait SemigroupK: MagmaK + Associativity {
         result
     }
 
-    fn combine_all_option_k<T>(xs: impl IntoIterator<Item = Self::F<T>>) -> Option<Self::F<T>>
+    fn combine_all_option_k<T>(
+        xs: impl IntoIterator<Item = Self::Wrapped<T>>,
+    ) -> Option<Self::Wrapped<T>>
     where
-        Self: Associativity<Self::F<T>> + Totality<Self::F<T>>,
+        Self: Associativity<Self::Wrapped<T>> + Totality<Self::Wrapped<T>>,
     {
         xs.into_iter().fold(None, |acc, x| match acc {
             None => Some(x),
