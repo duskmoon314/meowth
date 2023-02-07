@@ -107,6 +107,22 @@ impl<A> MagmaK for Vec<A> {
     }
 }
 
+pub trait Magmaal: HKT1 + Totality + Sized {
+    fn product<A, B>(x: Self::Wrapped<A>, y: Self::Wrapped<B>) -> Self::Wrapped<(A, B)>
+    where
+        Self: Totality<Self::Wrapped<A>> + Totality<Self::Wrapped<B>>;
+}
+
+#[cfg(feature = "instance")]
+impl<A> Magmaal for Option<A> {
+    fn product<B, C>(x: Option<B>, y: Option<C>) -> Option<(B, C)> {
+        match (x, y) {
+            (Some(x), Some(y)) => Some((x, y)),
+            _ => None,
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

@@ -57,7 +57,7 @@ impl<T, S: Semigroup<T> + Identity<T>> Monoid<T> for S {}
 /// # MonoidK
 ///
 /// A `MonoidK` is a [`SemigroupK`] which has [`Identity`]. That is, the
-/// operation [`combine_k`](SemigroupK::combine_k) must be associative and there
+/// operation [`combine_k`](MagmaK::combine_k) must be associative and there
 /// must be an element [`IDENTITY`](Identity::IDENTITY) such that
 /// `combine_k(x, IDENTITY) = x` for all `x`.
 ///
@@ -87,6 +87,17 @@ pub trait MonoidK: SemigroupK + Identity {
 }
 
 impl<S: SemigroupK + Identity> MonoidK for S {}
+
+pub trait Monoidal: Semigroupal + Identity {
+    fn unit() -> Self::Wrapped<()>;
+}
+
+#[cfg(feature = "instance")]
+impl<T> Monoidal for Option<T> {
+    fn unit() -> Option<()> {
+        Some(())
+    }
+}
 
 #[cfg(test)]
 mod tests {

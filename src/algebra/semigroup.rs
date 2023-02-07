@@ -1,6 +1,6 @@
 use super::*;
 
-/// # SemiGroup
+/// # Semigroup
 ///
 /// A `Semigroup` is a [`Magma`] which has [`Associativity`]. That is, the
 /// operation [`combine`](Magma::combine) must be associative.
@@ -133,6 +133,10 @@ pub trait SemigroupK: MagmaK + Associativity {
 }
 
 impl<S: MagmaK + Associativity> SemigroupK for S {}
+
+pub trait Semigroupal: Magmaal + Associativity {}
+
+impl<S: Magmaal + Associativity> Semigroupal for S {}
 
 #[cfg(test)]
 mod tests {

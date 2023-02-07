@@ -97,6 +97,10 @@ macro_rules! impl_identity {
 // In `instance`, we impl AddGroup for all numeric types.
 impl_identity!(i8, i16, i32, i64, i128, isize, u8, u16, u32, u64, u128, usize, f32, f64);
 
+impl<T> Identity for Option<T> {
+    const IDENTITY: Self = None;
+}
+
 #[cfg(feature = "instance")]
 impl<T> Identity for Vec<T> {
     const IDENTITY: Self = vec![];
