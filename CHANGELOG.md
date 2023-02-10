@@ -9,14 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- utilities:
-  - HKT1 (`F<_>`)
-  - EqT: To assert equality of two types
-- algebraic structures:
-  - Magma, Semigroup, Monoid, Group
-  - MagmaK, SemigroupK, MonoidK, GroupK, Functor (for `F<_>`)
-  - Magmaal, Semigroupal, Monoidal, Apply, Applicative, FlatMap, Monad
-- algebraic properties:
-  - Totality, Associativity, Identity, Inverse, Commutativity
+#### cats-core
+
+- basic typeclasses:
+  - Id (Identity)
+  - Hkt1 (Higher Kinded Type `F<_>`)
+  - Magma, Semigroup, Monoid
+  - MagmaK, SemigroupK, MonoidK, Functor
+  - Magmoidal, Monoidal, Applicative, Monad
 
 [unreleased]: https://github.com/duskmoon314/cats/commits/main

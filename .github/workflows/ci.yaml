@@ -54,7 +54,7 @@ jobs:
       - name: Setup Rust nightly to build docs
         run: rustup default nightly
       - name: Build docs
-        run: RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --all-features --no-deps --verbose
+        run: RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --all-features --no-deps --verbose --workspace
       - name: Generate index.html
         run: echo '<meta http-equiv=refresh content=0;url=cats/index.html>' > target/doc/index.html
 

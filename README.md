@@ -1,5 +1,7 @@
 # Cats
 
+[![codecov](https://codecov.io/gh/duskmoon314/cats/branch/main/graph/badge.svg?token=6NHWA7F2LZ)](https://codecov.io/gh/duskmoon314/cats)
+
 `Cats` is a library that provides abstractions for functional programming in Rust. Inspired by Scala library [cats](https://github.com/typelevel/cats).
 
 ## Introduction
