@@ -96,7 +96,7 @@ where
 
     /// Get the state without changing it
     pub fn get(&self) -> State<S, S> {
-        State::new(Rc::new(move |s: S| (s.clone(), s.clone())))
+        State::new(Rc::new(move |s: S| (s.clone(), s)))
     }
 }
 
