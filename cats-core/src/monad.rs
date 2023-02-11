@@ -17,7 +17,7 @@ pub trait Monad: Applicative {
     /// ```
     fn flat_map<B, F>(self, f: F) -> Self::Wrapped<B>
     where
-        F: Fn(Self::Unwrapped) -> Self::Wrapped<B>;
+        for<'a> F: Fn(Self::Unwrapped) -> Self::Wrapped<B> + 'a;
 
     /// Flatten a nested structure `F<F<A>>` into a flat structure `F<A>`.
     ///

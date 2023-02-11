@@ -93,11 +93,15 @@ impl<T> MonoidK for Option<T> {
 /// `Monoidal` is a [`Magmoidal`] with an unit object.
 pub trait Monoidal: Magmoidal {
     /// The unit object of `combine`
-    const UNIT: Self::Wrapped<()>;
+    // const UNIT: Self::Wrapped<()>;
+    fn unit() -> Self::Wrapped<()>;
 }
 
 impl<T> Monoidal for Option<T> {
-    const UNIT: Option<()> = Some(());
+    // const UNIT: Option<()> = Some(());
+    fn unit() -> Option<()> {
+        Some(())
+    }
 }
 
 #[cfg(test)]
@@ -127,6 +131,6 @@ mod tests {
 
     #[test]
     fn test_monoidal() {
-        assert_eq!(Option::<i32>::UNIT, Some(()));
+        assert_eq!(Option::<i32>::unit(), Some(()));
     }
 }

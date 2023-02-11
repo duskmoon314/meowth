@@ -134,7 +134,9 @@ pub trait Magmoidal: Hkt1 + Sized {
     /// let z = x.product(y);
     /// assert_eq!(z, Some((1, 2.0)));
     /// ```
-    fn product<B>(self, b: Self::Wrapped<B>) -> Self::Wrapped<(Self::Unwrapped, B)>;
+    fn product<B>(self, b: Self::Wrapped<B>) -> Self::Wrapped<(Self::Unwrapped, B)>
+    where
+        for<'a> B: 'a;
 }
 
 impl<A> Magmoidal for Option<A> {

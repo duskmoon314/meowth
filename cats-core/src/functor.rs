@@ -28,13 +28,13 @@ pub trait Functor: Hkt1 + Sized {
     /// Maps a function over the wrapped value.
     fn map<B, F>(self, f: F) -> Self::Wrapped<B>
     where
-        F: Fn(Self::Unwrapped) -> B;
+        for<'a> F: Fn(Self::Unwrapped) -> B + 'a;
 
     /// Some types have a `map` method already, so we use `fmap` as an alias of
     /// [`map`](Functor::map).
     fn fmap<B, F>(self, f: F) -> Self::Wrapped<B>
     where
-        F: Fn(Self::Unwrapped) -> B,
+        for<'a> F: Fn(Self::Unwrapped) -> B + 'a,
     {
         self.map(f)
     }

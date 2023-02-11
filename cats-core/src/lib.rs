@@ -9,6 +9,7 @@ pub mod magma;
 pub mod monad;
 pub mod monoid;
 pub mod semigroup;
+pub mod state;
 
 #[doc(inline)]
 pub use applicative::Applicative;
@@ -26,3 +27,5 @@ pub use monad::Monad;
 pub use monoid::{Monoid, MonoidK, Monoidal};
 #[doc(inline)]
 pub use semigroup::{Semigroup, SemigroupK};
+#[doc(inline)]
+pub use state::State;

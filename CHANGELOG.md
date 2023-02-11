@@ -17,5 +17,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Magma, Semigroup, Monoid
   - MagmaK, SemigroupK, MonoidK, Functor
   - Magmoidal, Monoidal, Applicative, Monad
+  - State
 
 [unreleased]: https://github.com/duskmoon314/cats/commits/main

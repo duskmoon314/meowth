@@ -19,12 +19,13 @@ pub trait Applicative: Functor + Monoidal {
     /// ```
     fn pure<A>(a: A) -> Self::Wrapped<A>
     where
-        Self: Id<Self::Wrapped<A>>;
+        Self: Id<Self::Wrapped<A>>,
+        for<'a> A: Clone + 'a;
 
     /// `ap` applies a function to the value
     fn ap<B, F>(self, ff: Self::Wrapped<F>) -> Self::Wrapped<B>
     where
-        F: Fn(Self::Unwrapped) -> B;
+        for<'a> F: Fn(Self::Unwrapped) -> B + 'a;
 
     /// `ap2` applies a function to two values
     ///
@@ -42,9 +43,13 @@ pub trait Applicative: Functor + Monoidal {
     /// let w = x.ap2(y, z);
     /// assert_eq!(w, Some(3.0));
     /// ```
-    fn ap2<B, C, F>(self, b: Self::Wrapped<B>, f: Self::Wrapped<F>) -> Self::Wrapped<C>
+    fn ap2<B, C, F>(self, _b: Self::Wrapped<B>, _f: Self::Wrapped<F>) -> Self::Wrapped<C>
     where
-        F: Fn(Self::Unwrapped, B) -> C;
+        for<'a> F: Fn(Self::Unwrapped, B) -> C + 'a,
+        for<'a> B: 'a,
+    {
+        unimplemented!()
+    }
 }
 
 impl<T> Applicative for Option<T> {
@@ -64,7 +69,8 @@ impl<T> Applicative for Option<T> {
 
     fn ap2<B, C, F>(self, b: Option<B>, f: Option<F>) -> Option<C>
     where
-        F: Fn(T, B) -> C,
+        for<'a> F: Fn(T, B) -> C + 'a,
+        for<'a> B: 'a,
     {
         match self.product(b).product(f) {
             Some(((a, b), f)) => Some(f(a, b)),
