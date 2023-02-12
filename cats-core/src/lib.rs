@@ -2,6 +2,7 @@
 #![doc = include_str!("../README.md")]
 
 pub mod applicative;
+pub mod either;
 pub mod functor;
 pub mod hkt;
 pub mod id;
@@ -13,6 +14,8 @@ pub mod state;
 
 #[doc(inline)]
 pub use applicative::Applicative;
+#[doc(inline)]
+pub use either::{Either, Left, Right};
 #[doc(inline)]
 pub use functor::Functor;
 #[doc(inline)]
