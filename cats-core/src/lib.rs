@@ -3,6 +3,7 @@
 
 pub mod applicative;
 pub mod either;
+pub mod foldable;
 pub mod functor;
 pub mod hkt;
 pub mod id;
@@ -16,6 +17,8 @@ pub mod state;
 pub use applicative::Applicative;
 #[doc(inline)]
 pub use either::{Either, Left, Right};
+#[doc(inline)]
+pub use foldable::Foldable;
 #[doc(inline)]
 pub use functor::Functor;
 #[doc(inline)]
