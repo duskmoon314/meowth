@@ -4,7 +4,7 @@ use crate::core::Hkt1;
 
 /// `Functor` is a map from one category to another.
 ///
-/// In `cats`, it provides two methods [`map`](Functor::fmap) (or
+/// In `meowth`, it provides two methods [`map`](Functor::fmap) (or
 /// [`fmap`](Functor::fmap) as an alias) and [`lift`](Functor::lift) to map a
 /// value of type `A` to a value of type `B` or a function from `A` to `B`.
 ///
@@ -15,7 +15,7 @@ use crate::core::Hkt1;
 /// # Example
 ///
 /// ```
-/// use cats::core::Functor;
+/// use meowth::core::Functor;
 ///
 /// let x = Some(1);
 /// let y = x.fmap(|x| x as f64 / 2.0);

@@ -11,7 +11,7 @@ use crate::core::{Applicative, Functor, Hkt1, Id, Magmoidal, Monad, Monoidal};
 /// # Example
 ///
 /// ```rust
-/// use cats::core::*;
+/// use meowth::core::*;
 /// use std::rc::Rc;
 ///
 /// #[derive(Debug, Clone, PartialEq, Eq)]

@@ -5,7 +5,7 @@
 /// For example, `MyF<T>` can be implemented as:
 ///
 /// ```
-/// use cats::core::Hkt1;
+/// use meowth::core::Hkt1;
 ///
 /// struct MyF<T>(T);
 ///

@@ -1,8 +1,10 @@
-# Cats
+# Meowth
 
-[![codecov](https://codecov.io/gh/duskmoon314/cats/branch/main/graph/badge.svg?token=6NHWA7F2LZ)](https://codecov.io/gh/duskmoon314/cats)
+[![codecov](https://codecov.io/gh/duskmoon314/meowth/branch/main/graph/badge.svg?token=6NHWA7F2LZ)](https://codecov.io/gh/duskmoon314/meowth)
+[![crates.io](https://img.shields.io/crates/v/meowth.svg)](https://crates.io/crates/meowth)
+[![docs.rs](https://docs.rs/meowth/badge.svg)](https://docs.rs/meowth)
 
-`Cats` is a library that provides abstractions for functional programming in Rust. Inspired by Scala library [cats](https://github.com/typelevel/cats).
+`Meowth` is a library that provides abstractions for functional programming in Rust. Inspired by Scala library [cats](https://github.com/typelevel/cats). The name `Meowth` is a reference to the Pokemon character [Meowth](<https://bulbapedia.bulbagarden.net/wiki/Meowth_(Pok%C3%A9mon)>) as it is a cat-like Pokemon and the name `cats` has been taken.
 
 ## Introduction
 
@@ -19,9 +21,9 @@
 
 Licensed under either of
 
-- Apache License, Version 2.0 ([LICENSE-APACHE](https://github.com/duskmoon314/cats/blob/main/LICENSE-APACHE) or
+- Apache License, Version 2.0 ([LICENSE-APACHE](https://github.com/duskmoon314/meowth/blob/main/LICENSE-APACHE) or
   <http://www.apache.org/licenses/LICENSE-2.0>)
-- MIT license ([LICENSE-MIT](https://github.com/duskmoon314/cats/blob/main/LICENSE-MIT) or <http://opensource.org/licenses/MIT>)
+- MIT license ([LICENSE-MIT](https://github.com/duskmoon314/meowth/blob/main/LICENSE-MIT) or <http://opensource.org/licenses/MIT>)
 
 at your option.
 

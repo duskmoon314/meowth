@@ -1,5 +1,5 @@
 [package]
-name = "cats"
+name = "meowth"
 version.workspace = true
 edition.workspace = true
 authors.workspace = true
@@ -14,15 +14,15 @@ repository.workspace = true
 members = []
 
 [workspace.package]
-version = "0.0.0"
+version = "0.0.1"
 edition = "2021"
 authors = ["duskmoon (Campbell He) <kp.campbell.he@duskmoon314.com>"]
 description = "A library which provides abstractions for functional programming in Rust. Inspired by Scala library cats."
 categories = ["data-structures", "mathematics"]
-keywords = ["functional-programming", "category-theory"]
+keywords = ["fp", "category-theory"]
 license = "MIT OR Apache-2.0"
 readme = "README.md"
-repository = "https://github.com/duskmoon314/cats"
+repository = "https://github.com/duskmoon314/meowth"
 
 [workspace.dependencies]
 

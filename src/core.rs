@@ -1,4 +1,4 @@
-//! Core traits and types of cats
+//! Core traits and types of meowth
 
 pub mod applicative;
 pub mod either;

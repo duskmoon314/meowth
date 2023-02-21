@@ -20,4 +20,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - basic data type
     - State, Either
 
-[unreleased]: https://github.com/duskmoon314/cats/commits/main
+[unreleased]: https://github.com/duskmoon314/meowth/commits/main
