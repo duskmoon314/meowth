@@ -1,6 +1,6 @@
 //! Foldable
 
-use crate::*;
+use crate::core::*;
 
 /// Data structures that can be folded to a summary value.
 pub trait Foldable: Hkt1 + Sized {

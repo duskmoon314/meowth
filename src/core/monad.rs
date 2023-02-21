@@ -1,6 +1,6 @@
 //! Monad
 
-use crate::*;
+use crate::core::*;
 
 /// `Monad` is an [`Applicative`] with [`flat_map`](Monad::flat_map).
 pub trait Monad: Applicative {
@@ -9,7 +9,7 @@ pub trait Monad: Applicative {
     /// # Examples
     ///
     /// ```
-    /// use cats_core::Monad;
+    /// use cats::core::Monad;
     ///
     /// let x = Some(1);
     /// let y = x.flat_map(|x| Some(x + 1));
@@ -24,7 +24,7 @@ pub trait Monad: Applicative {
     /// # Examples
     ///
     /// ```
-    /// use cats_core::Monad;
+    /// use cats::core::Monad;
     ///
     /// let x = Some(Some(1));
     /// let y = x.flat_map(|x| x);

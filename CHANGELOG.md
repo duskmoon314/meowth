@@ -9,16 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-#### cats-core
-
-- basic typeclasses:
-  - Id (Identity)
-  - Hkt1 (Higher Kinded Type `F<_>`)
-  - Magma, Semigroup, Monoid
-  - MagmaK, SemigroupK, MonoidK, Functor
-  - Magmoidal, Monoidal, Applicative, Monad
-  - Foldable (Haskell like)
-- basic data type
-  - State, Either
+- core
+  - basic typeclasses:
+    - Id (Identity)
+    - Hkt1 (Higher Kinded Type `F<_>`)
+    - Magma, Semigroup, Monoid
+    - MagmaK, SemigroupK, MonoidK, Functor
+    - Magmoidal, Monoidal, Applicative, Monad
+    - Foldable (Haskell like)
+  - basic data type
+    - State, Either
 
 [unreleased]: https://github.com/duskmoon314/cats/commits/main

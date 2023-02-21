@@ -1,6 +1,6 @@
 //! Either
 
-use crate::{Applicative, Functor, Hkt1, Id, Magmoidal, Monad, Monoidal};
+use crate::core::{Applicative, Functor, Hkt1, Id, Magmoidal, Monad, Monoidal};
 
 /// `Either`
 #[derive(Debug, Clone, PartialEq)]

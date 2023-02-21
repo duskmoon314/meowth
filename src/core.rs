@@ -1,5 +1,4 @@
-#![deny(missing_docs)]
-#![doc = include_str!("../README.md")]
+//! Core traits and types of cats
 
 pub mod applicative;
 pub mod either;

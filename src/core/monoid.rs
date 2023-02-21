@@ -1,6 +1,6 @@
 //! Monoid and generalized concept
 
-use crate::*;
+use crate::core::*;
 
 /// `Monoid` is a [`Semigroup`] with an identity element.
 ///

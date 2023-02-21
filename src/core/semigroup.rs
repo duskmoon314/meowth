@@ -1,6 +1,6 @@
 //! Semigroup and generalized concept
 
-use crate::*;
+use crate::core::*;
 
 /// `Semigroup` is a [`Magma`] whose [`combine`](Magma::combine) operation is
 /// associative.

@@ -1,6 +1,6 @@
 //! Magma and generalized concept
 
-use crate::Hkt1;
+use crate::core::Hkt1;
 
 /// `Magma` is a type with a binary operation [`combine`](Magma::combine) that
 /// must be closed.
@@ -20,7 +20,7 @@ pub trait Magma: Sized {
     /// # Examples
     ///
     /// ```
-    /// use cats_core::Magma;
+    /// use cats::core::Magma;
     ///
     /// assert_eq!(1.combine(2), 3);
     /// assert_eq!(Some(1).combine(Some(2)), Some(3));
@@ -36,7 +36,7 @@ pub trait Magma: Sized {
     /// # Examples
     ///
     /// ```
-    /// use cats_core::Magma;
+    /// use cats::core::Magma;
     ///
     /// assert_eq!(1.square(), 2);
     /// assert_eq!(Some(1).square(), Some(2));
@@ -95,7 +95,7 @@ pub trait MagmaK: Hkt1 + Sized {
     /// # Examples
     ///
     /// ```
-    /// use cats_core::MagmaK;
+    /// use cats::core::MagmaK;
     ///
     /// assert_eq!(Option::combine_k(Some(1), Some(2)), Some(1));
     /// assert_eq!(Option::combine_k(Some(1), None), Some(1));
@@ -127,7 +127,7 @@ pub trait Magmoidal: Hkt1 + Sized {
     /// # Example
     ///
     /// ```
-    /// use cats_core::*;
+    /// use cats::core::*;
     ///
     /// let x = Some(1);
     /// let y = Some(2.0);

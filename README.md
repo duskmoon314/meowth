@@ -6,6 +6,15 @@
 
 ## Introduction
 
+### Reference
+
+- [Functional Programming (Wikipedia)](https://en.wikipedia.org/wiki/Functional_programming)
+- [Category Theory (Wikipedia)](https://en.wikipedia.org/wiki/Category_theory)
+- [Category Theory (nLab)](https://ncatlab.org/nlab/show/category+theory)
+- [Bartosz Milewski's _Category Theory for Programmers_](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/)
+  - [_Category Theory for Programmers_ (PDF)](https://github.com/hmemcpy/milewski-ctfp-pdf)
+- [Scala library `cats`](https://typelevel.org/cats/index.html)
+
 ## License
 
 Licensed under either of
@@ -16,6 +25,12 @@ Licensed under either of
 
 at your option.
 
+### Contribution
+
+Unless you explicitly state otherwise, any Contribution intentionally submitted for inclusion in the work by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions.
+
 ## Disclaimer
 
 This is currently a toy project as I learn FP. It may not be production ready. Use at your own risk.
+
+If you are familiar with FP and/or category theory, please feel free to contribute. I would love to learn from you.

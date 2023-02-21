@@ -1,6 +1,6 @@
 //! Functor
 
-use crate::Hkt1;
+use crate::core::Hkt1;
 
 /// `Functor` is a map from one category to another.
 ///
@@ -15,7 +15,7 @@ use crate::Hkt1;
 /// # Example
 ///
 /// ```
-/// use cats_core::Functor;
+/// use cats::core::Functor;
 ///
 /// let x = Some(1);
 /// let y = x.fmap(|x| x as f64 / 2.0);

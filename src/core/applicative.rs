@@ -1,6 +1,6 @@
 //! Applicative
 
-use crate::*;
+use crate::core::*;
 
 /// `Applicative` is a [`Functor`] with a [`pure`](Applicative::pure) method
 ///
@@ -12,7 +12,7 @@ pub trait Applicative: Functor + Monoidal {
     /// # Example
     ///
     /// ```
-    /// use cats_core::*;
+    /// use cats::core::*;
     ///
     /// let x = Option::pure(1);
     /// assert_eq!(x, Some(1));
@@ -35,7 +35,7 @@ pub trait Applicative: Functor + Monoidal {
     /// # Example
     ///
     /// ```
-    /// use cats_core::*;
+    /// use cats::core::*;
     ///
     /// let x = Some(1);
     /// let y = Some(2.0);

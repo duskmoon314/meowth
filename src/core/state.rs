@@ -2,7 +2,7 @@
 
 use std::rc::Rc;
 
-use crate::{Applicative, Functor, Hkt1, Id, Magmoidal, Monad, Monoidal};
+use crate::core::{Applicative, Functor, Hkt1, Id, Magmoidal, Monad, Monoidal};
 
 /// `State` wraps a function `S -> (S, A)`.
 ///
@@ -11,7 +11,7 @@ use crate::{Applicative, Functor, Hkt1, Id, Magmoidal, Monad, Monoidal};
 /// # Example
 ///
 /// ```rust
-/// use cats_core::*;
+/// use cats::core::*;
 /// use std::rc::Rc;
 ///
 /// #[derive(Debug, Clone, PartialEq, Eq)]
@@ -193,7 +193,7 @@ where
 mod tests {
     use std::rc::Rc;
 
-    use crate::*;
+    use crate::core::*;
 
     #[test]
     fn test_state() {
